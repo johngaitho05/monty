@@ -1,0 +1,13 @@
+*.so
+*.mo
+*.pot
+*.log
+.env
+.pyre/
+.pytype/
+cython_debug/
+.idea/
+nbproject
+test.*
+/data/
+secret.*
