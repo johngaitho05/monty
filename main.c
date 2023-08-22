@@ -4,9 +4,10 @@
  * main - the entry point for our monty program
  * @argc: number of args
  * @argv: array of string args
+ * @env: environment variables
  * Return: 0 if successful else EXIT_FAILURE
  */
-int main(int argc, char *argv[])
+int main(int argc, char *argv[], char **env)
 {
 	FILE *file;
 
@@ -22,6 +23,6 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	execute(file);
+	execute(file, env);
 	return (0);
 }

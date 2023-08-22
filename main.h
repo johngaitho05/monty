@@ -37,8 +37,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern int opcode_arg;
-
+char *strip(char *str, char *tokens);
 stack_t *create_node(int data);
 void push(stack_t **top, int data);
 int pop(stack_t **top);
@@ -48,7 +47,8 @@ void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
 void handle_pint(stack_t **stack, unsigned int line_number);
-void execute(FILE *file);
+int setenv(char ***environ, const char *name, const char *value, int overwrite);
+void execute(FILE *file, char **env);
 #endif
 
 
