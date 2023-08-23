@@ -40,15 +40,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char *_strchr(char *s, char c);
-int _strcmp(char *s1, char *s2);
-int _strlen(char *s);
-char *_strncpy(char *dest, char *src, int n);
-int _strncmp(const char *str1, const char *str2, size_t n);
-void *_memmove(void *dest, const void *src, size_t n);
-char *_memcpy(char *dest, char *src, unsigned int n);
-void *_realloc(void *ptr, size_t new_size);
-int _getline(char **lineptr, size_t *n, FILE *stream);
+
 char *strip(char *str, char *tokens);
 stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);
@@ -57,6 +49,5 @@ void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
 void handle_pint(stack_t **stack, unsigned int line_number);
-int setenv(char ***env, char *name, char *value, int overwrite);
 void execute(FILE *file);
 #endif
