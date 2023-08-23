@@ -17,10 +17,8 @@ void execute(FILE *file)
 			{"pint", handle_pint}, {"pop", handle_pop}
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
-	/* Read the file line by line and execute each command */
 	while (getline(&line, &len, file) != -1)
 	{
-		/* Remove trailing whitespaces and new line characters */
 		strip(line, NULL);
 		if (strlen(line) == 0)
 			continue;
