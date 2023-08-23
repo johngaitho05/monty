@@ -9,7 +9,7 @@
  */
 char  *strip(char *str, char *tokens)
 {
-	int length = strlen(str), i = 0;
+	int length = _strlen(str), i = 0;
 
 	if (!tokens)
 		tokens = " \t\r";
@@ -17,12 +17,12 @@ char  *strip(char *str, char *tokens)
 	if (length > 0)
 	{
 		/* Remove leading spaces **/
-		while (i < length && strchr(tokens, str[i]))
+		while (i < length && _strchr(tokens, str[i]))
 			i++;
-		memmove(str, str + i, length - i + 1);
+		_memmove(str, str + i, length - i + 1);
 
 		/* Remove trailing spaces */
-		while (length > 0 && strchr(tokens, str[length - 1]))
+		while (length > 0 && _strchr(tokens, str[length - 1]))
 		{
 			str[length - 1] = '\0';
 			length--;

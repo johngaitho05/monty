@@ -38,7 +38,7 @@ void execute(FILE *file)
 	{
 		/* Remove trailing whitespaces and new line characters */
 		strip(line, NULL);
-		if (strlen(line) == 0)
+		if (_strlen(line) == 0)
 			continue;
 		monty_opcode = line;
 		line_is_valid = 0;
@@ -46,7 +46,7 @@ void execute(FILE *file)
 		{
 			/* If the opcode starts with a known prefix, call the related function */
 			prefix = instructions[i].opcode;
-			if (strncmp(line, prefix, strlen(prefix)) == 0)
+			if (_strncmp(line, prefix, _strlen(prefix)) == 0)
 			{
 				line_is_valid = 1;
 				instructions[i].f(&stack, line_number);

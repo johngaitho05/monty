@@ -8,13 +8,13 @@
  * @overwrite: whether the variable should be overwritten if it exists
  * Return: 0 if successful else -1
  */
-int setenv(char ***env, const char *name, const char *value, int overwrite)
+int setenv(char ***env, char *name, char *value, int overwrite)
 {
 	char *env_entry = NULL, **environ = *env;
 	size_t env_entry_len = 0;
 	int i;
 
-	if (!name || !value || strchr(name, '=') || strchr(value, '='))
+	if (!name || !value || _strchr(name, '=') || _strchr(value, '='))
 	{
 		return (-1); /* Invalid input */
 	}
@@ -22,13 +22,13 @@ int setenv(char ***env, const char *name, const char *value, int overwrite)
 	/* Check if the environment variable already exists */
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (strncmp(environ[i], name, strlen(name)) ==
-		0 && environ[i][strlen(name)] == '=')
+		if (_strncmp(environ[i], name, _strlen(name)) ==
+		0 && environ[i][_strlen(name)] == '=')
 		{
 			if (!overwrite)
 				return (0); /* Variable exists and overwrite is not allowed */
 			env_entry = environ[i];
-			env_entry_len = strlen(env_entry);
+			env_entry_len = _strlen(env_entry);
 			break;
 		}
 	}
@@ -37,7 +37,7 @@ int setenv(char ***env, const char *name, const char *value, int overwrite)
 	if (env_entry == NULL)
 	{
 		/* +2 for '=' and null terminator */
-		env_entry_len = strlen(name) + strlen(value) + 2;
+		env_entry_len = _strlen(name) + _strlen(value) + 2;
 		env_entry = (char *)malloc(env_entry_len);
 		if (env_entry == NULL)
 		{
