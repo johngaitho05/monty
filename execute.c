@@ -28,9 +28,9 @@ void execute(FILE *file, char **env)
 	stack_t *stack = NULL;
 	char line[1024], *prefix;
 	int line_is_valid, line_number = 1, i, num_instructions;
-	instruction_t instructions[] = {{"push", handle_push},
-			{"pop", handle_pop}, {"pall", handle_pall},
-			{"pint", handle_pint}
+	instruction_t instructions[] = {
+			{"push", handle_push},
+			{"pall", handle_pall},
 	};
 
 	(void)env;
