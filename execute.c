@@ -9,7 +9,9 @@ char *monty_opcode;
 void execute(FILE *file)
 {
 	stack_t *stack = NULL;
-	char line[1024], *prefix;
+	char *line, *prefix;
+	size_t len = 0;
+	ssize_t read;
 	int line_is_valid, line_number = 1, i, num_instructions;
 	instruction_t instructions[] = {
 			{"push", handle_push}, {"pall", handle_pall},
@@ -17,7 +19,7 @@ void execute(FILE *file)
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	/* Read the file line by line and execute each command */
-	while (fgets(line, sizeof(line), file))
+	while ((read = getline(&line, &len, file)) != -1)
 	{
 		/* Remove trailing whitespaces and new line characters */
 		strip(line, NULL);
