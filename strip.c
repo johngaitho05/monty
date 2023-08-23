@@ -12,7 +12,7 @@ char  *strip(char *str, char *tokens)
 	int length = _strlen(str), i = 0;
 
 	if (!tokens)
-		tokens = " \t\r";
+		tokens = " \n\t\r";
 
 	if (length > 0)
 	{

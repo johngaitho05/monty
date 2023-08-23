@@ -3,7 +3,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include "unistd.h"
+#include "wait.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include "syscall.h"
+#include "string.h"
 
 extern char *monty_opcode;
 
@@ -43,6 +51,9 @@ int _strlen(char *s);
 char *_strncpy(char *dest, char *src, int n);
 int _strncmp(const char *str1, const char *str2, size_t n);
 void *_memmove(void *dest, const void *src, size_t n);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_realloc(void *ptr, size_t new_size);
+int _getline(char **lineptr, size_t *n, FILE *stream);
 char *strip(char *str, char *tokens);
 stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);

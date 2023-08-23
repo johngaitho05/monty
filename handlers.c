@@ -9,10 +9,9 @@ void set_arg(char *arg, char *command)
 {
 	int index = _strlen(command);
 
-	while (_strchr(&monty_opcode[index], ' ') != 0)
+	while (_strchr(&monty_opcode[index], ' ') == 0)
 		index++;
-
-	_strncpy(arg, monty_opcode + index, 1024);
+	strncpy(arg, monty_opcode + index, 1024);
 	strip(arg, NULL);
 }
 
@@ -30,7 +29,7 @@ void handle_push(stack_t **stack, unsigned int line_number)
 
 	value = atoi(arg);
 
-	if (value == 0 && _strcmp(arg, "0") != 0)
+	if (value == 0 && _strncmp(arg, "0", 1) != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -71,5 +70,3 @@ void handle_pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	print_stack(*stack);
 }
-
-

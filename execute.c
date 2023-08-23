@@ -14,6 +14,8 @@ void execute(FILE *file)
 	instruction_t instructions[] = {
 			{"push", handle_push},
 			{"pall", handle_pall},
+			{"pint", handle_pint},
+			{"pop", handle_pop}
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	/* Read the file line by line and execute each command */
