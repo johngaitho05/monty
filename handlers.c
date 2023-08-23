@@ -56,8 +56,13 @@ void handle_pop(stack_t **stack, unsigned int line_number)
  */
 void handle_pint(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
-	(void) (stack);
+	if(*stack == NULL)
+	{
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n",(*stack)->n);
 }
 
 /**
