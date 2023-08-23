@@ -10,8 +10,8 @@ void execute(FILE *file)
 {
 	stack_t *stack = NULL;
 	char *line = NULL, *prefix;
-	size_t len = 0;
-	int line_is_valid, line_number = 1, i, num_instructions;
+	size_t len = 0, prefix_len;
+	int line_is_valid, line_number = 1, i, num_instructions, valid_end = 0;
 	instruction_t instructions[] = {
 			{"push", handle_push}, {"pall", handle_pall},
 			{"pint", handle_pint}, {"pop", handle_pop}
@@ -28,7 +28,10 @@ void execute(FILE *file)
 		{
 			/* If the opcode starts with a known prefix, call the related function */
 			prefix = instructions[i].opcode;
-			if (strncmp(line, prefix, strlen(prefix)) == 0)
+			prefix_len = strlen(prefix);
+			if (strncmp(" ", &line[prefix_len], 1) == 0 || line[prefix_len] == '\0')
+				valid_end = 1;
+			if (strncmp(line, prefix, prefix_len) == 0 && valid_end)
 			{
 				line_is_valid = 1;
 				instructions[i].f(&stack, line_number);
