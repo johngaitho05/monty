@@ -47,7 +47,18 @@ void handle_push(stack_t **stack, unsigned int line_number)
 void handle_pop(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	pop(stack);
+	(void)stack;
+}
+
+/**
+ * handle_pint - prints the topmost element of the stack
+ * @stack: a pointer to the stack
+ * @line_number: position of the opcode in the file
+ */
+void handle_pint(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(void) (stack);
 }
 
 /**
@@ -61,17 +72,4 @@ void handle_pall(stack_t **stack, unsigned int line_number)
 	print_stack(*stack);
 }
 
-/**
- * handle_pint - prints the topmost element of the stack
- * @stack: a pointer to the stack
- * @line_number: position of the opcode in the file
- */
-void handle_pint(stack_t **stack, unsigned int line_number)
-{
-	(void)line_number;
 
-	if (!is_empty(*stack))
-		printf("%d\n", (*stack)->n);
-	else
-		fprintf(stderr, "Stack is empty\n");
-}

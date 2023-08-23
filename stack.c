@@ -1,88 +1,63 @@
 #include "monty.h"
 
 /**
- * create_node - Creates a new node with the given data
- * @data: The data to be stored in the node
- *
- * Return: Pointer to the newly created node
+ * push - adds a node at the beginning of the dll
+ * @head: head node of the dll
+ * @n: value of the nee node
+ * Return: the newly inserted node if successful else NULL
  */
-stack_t *create_node(int data)
+stack_t *push(stack_t **head, const int n)
 {
-	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
+	stack_t *new = malloc(sizeof(stack_t));
 
-	if (new_node == NULL)
-	{
-		perror("MError: malloc failed");
-		exit(EXIT_FAILURE);
-	}
-	new_node->n = data;
-	new_node->prev = NULL;
-	new_node->next = NULL;
-	return (new_node);
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->prev = NULL;
+	new->next = *head;
+	if (*head != NULL)
+		(*head)->prev = new;
+	*head = new;
+	return (new);
 }
 
 /**
- * push - Adds an element to the top of the stack
- * @top: Pointer to the top of the stack
- * @data: The data to be pushed onto the stack
+ * print_stack - prints all elements of a stack_t list
+ * @h: pointer to head of list
+ * Return: number of nodes
  */
-void push(stack_t **top, int data)
+size_t print_stack(const stack_t *h)
 {
-	stack_t *new_node = create_node(data);
+	const stack_t *current;
+	unsigned int n; /* number of nodes */
 
-	new_node->next = *top;
-	if (*top != NULL)
-		(*top)->prev = new_node;
-	*top = new_node;
-}
-
-/**
- * pop - Removes an element from the top of the stack
- * @top: Pointer to the top of the stack
- *
- * Return: The data of the popped element
- */
-int pop(stack_t **top)
-{
-	int data = (*top)->n;
-	stack_t *temp = *top;
-	*top = (*top)->next;
-
-	if (*top == NULL)
-	{
-		fprintf(stderr, "Stack is empty\n");
-		exit(EXIT_FAILURE);
-	}
-
-	if (*top != NULL)
-		(*top)->prev = NULL;
-
-	free(temp);
-	return (data);
-}
-
-/**
- * is_empty - Checks if the stack is empty
- * @top: Pointer to the top of the stack
- *
- * Return: 1 if the stack is empty, 0 otherwise
- */
-int is_empty(stack_t *top)
-{
-	return (top == NULL);
-}
-
-/**
- * print_stack - Prints the contents of the stack
- * @top: Pointer to the top of the stack
- */
-void print_stack(stack_t *top)
-{
-	stack_t *current = top;
-
+	current = h;
+	n = 0;
 	while (current != NULL)
 	{
-		printf("%d\n", current->n);
+		printf("%i\n", current->n);
 		current = current->next;
+		n++;
+	}
+
+	return (n);
+}
+
+/**
+ * free_stack -frees a dll by deleting all nodes
+ * @head: pointer to head node
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *current;
+
+	while (head != NULL)
+	{
+		current = head->next;
+		if (current != NULL)
+			current->prev = NULL;
+		free(head);
+		head = current;
 	}
 }
