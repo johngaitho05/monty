@@ -12,7 +12,7 @@ stack_t *create_node(int data)
 
 	if (new_node == NULL)
 	{
-		perror("Memory allocation failed");
+		perror("MError: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = data;
@@ -51,6 +51,7 @@ int pop(stack_t **top)
 	if (*top == NULL)
 	{
 		fprintf(stderr, "Stack is empty\n");
+		free_stack(*top);
 		exit(EXIT_FAILURE);
 	}
 

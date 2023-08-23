@@ -30,7 +30,9 @@ void execute(FILE *file, char **env)
 	int line_is_valid, line_number = 1, i, num_instructions;
 	instruction_t instructions[] = {
 			{"push", handle_push},
+			{"pop", handle_pop},
 			{"pall", handle_pall},
+			{"pint", handle_pint}
 	};
 
 	(void)env;
@@ -58,6 +60,7 @@ void execute(FILE *file, char **env)
 		if (line_is_valid == 0)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 		line_number++;
