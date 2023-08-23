@@ -45,6 +45,7 @@ char *strip(char *str, char *tokens);
 stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);
 void free_stack(stack_t *head);
+int delete_at_index(stack_t **head, unsigned int index);
 void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
