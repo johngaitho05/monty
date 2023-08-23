@@ -21,19 +21,17 @@ void free_stack(stack_t *head)
 /**
  * execute - executes the commands contained in the file
  * @file: the file containing monty bytes
- * @env: environment variables
  */
-void execute(FILE *file, char **env)
+void execute(FILE *file)
 {
 	stack_t *stack = NULL;
 	char line[1024], *prefix;
 	int line_is_valid, line_number = 1, i, num_instructions;
 	instruction_t instructions[] = {
-			{"push", handle_push},
-			{"pall", handle_pall},
+			{"push", handle_push}, {"pall", handle_pall},
+			{"pint", handle_pint},
+			{"pop", handle_pop}
 	};
-
-	(void)env;
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	/* Read the file line by line and execute each command */
 	while (fgets(line, sizeof(line), file))

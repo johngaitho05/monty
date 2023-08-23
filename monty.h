@@ -51,5 +51,5 @@ void handle_pall(stack_t **stack, unsigned int line_number);
 void handle_pint(stack_t **stack, unsigned int line_number);
 int setenv(char ***environ, const char *name,
 		   const char *value, int overwrite);
-void execute(FILE *file, char **env);
+void execute(FILE *file);
 #endif
