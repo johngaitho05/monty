@@ -1,17 +1,12 @@
-#ifndef MONTY_MAIN_H
-#define MONTY_MAIN_H
-
+#ifndef MONTY_H
+#define MONTY_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
-#include <sys/stat.h>
-#include "unistd.h"
-#include "wait.h"
-#include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
-#include "syscall.h"
-#include "string.h"
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 extern char *monty_opcode;
 
