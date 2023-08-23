@@ -1,5 +1,6 @@
 #include "monty.h"
 
+char *monty_opcode;
 
 /**
  * free_stack - frees the stack memory
@@ -31,6 +32,8 @@ void execute(FILE *file, char **env)
 			{"pop", handle_pop}, {"pall", handle_pall},
 			{"pint", handle_pint}
 	};
+
+	(void)env;
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	/* Read the file line by line and execute each command */
 	while (fgets(line, sizeof(line), file))
@@ -39,7 +42,7 @@ void execute(FILE *file, char **env)
 		strip(line, NULL);
 		if (strlen(line) == 0)
 			continue;
-		setenv(&env, "MONTY_OPCODE", line, 1);
+		monty_opcode = line;
 		line_is_valid = 0;
 		for (i = 0; i < num_instructions; i++)
 		{

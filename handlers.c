@@ -8,12 +8,11 @@
 void set_arg(char *arg, char *command)
 {
 	int index = strlen(command);
-	char *opcode = getenv("MONTY_OPCODE");
 
-	while (strchr(&opcode[index], ' ') != 0)
+	while (strchr(&monty_opcode[index], ' ') != 0)
 		index++;
 
-	strncpy(arg, opcode + index, 1024);
+	strncpy(arg, monty_opcode + index, 1024);
 	strip(arg, NULL);
 }
 

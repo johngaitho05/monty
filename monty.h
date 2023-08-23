@@ -22,6 +22,7 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern char *monty_opcode;
 
 /**
  * struct instruction_s - opcode and its function

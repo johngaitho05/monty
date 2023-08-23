@@ -11,6 +11,7 @@ int main(int argc, char *argv[], char **env)
 {
 	FILE *file;
 
+	(void)env;
 	if (argc != 2)
 	{
 		perror("USAGE: monty file\n");
