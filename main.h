@@ -43,6 +43,7 @@ void push(stack_t **top, int data);
 int pop(stack_t **top);
 int is_empty(stack_t *top);
 void print_stack(stack_t *top);
+void free_stack(stack_t *head);
 void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
@@ -51,5 +52,3 @@ int setenv(char ***environ, const char *name,
 		   const char *value, int overwrite);
 void execute(FILE *file, char **env);
 #endif
-
-

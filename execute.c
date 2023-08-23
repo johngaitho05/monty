@@ -1,5 +1,22 @@
 #include "main.h"
 
+
+/**
+ * free_stack - frees the stack memory
+ * @head: pointer to the head node
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *current;
+
+	while (head)
+	{
+		current = head->next;
+		free(head);
+		head = current;
+	}
+}
+
 /**
  * execute - executes the commands contained in the file
  * @file: the file containing monty bytes
@@ -43,4 +60,5 @@ void execute(FILE *file, char **env)
 		line_number++;
 	}
 	fclose(file);
+	free_stack(stack);
 }
