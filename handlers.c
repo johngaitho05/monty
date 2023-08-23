@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * set_arg - retrieve opcode argument from the environment variables
