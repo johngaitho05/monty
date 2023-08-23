@@ -61,6 +61,7 @@ void execute(FILE *file, char **env)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
 			free_stack(stack);
+			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 		line_number++;

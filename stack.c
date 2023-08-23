@@ -51,7 +51,6 @@ int pop(stack_t **top)
 	if (*top == NULL)
 	{
 		fprintf(stderr, "Stack is empty\n");
-		free_stack(*top);
 		exit(EXIT_FAILURE);
 	}
 
