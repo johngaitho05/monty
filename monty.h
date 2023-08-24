@@ -40,6 +40,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+char *remove_comment(char *line);
+int opcode_match(char *line, instruction_t *instructions, int i);
 int _arraylen(instruction_t **array);
 void set_arg(char *arg, char *command);
 char *strip(char *str, char *tokens);
