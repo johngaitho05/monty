@@ -8,8 +8,12 @@
  */
 stack_t *push(stack_t **head, const int n)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new;
 
+	if (!env.stack) /* Insertion mode is queue (FIFO) */
+		return (insert_at_end(head, n));
+
+	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return (NULL);
 
@@ -123,4 +127,3 @@ int delete_at_index(stack_t **head, unsigned int index)
 
 	return (1);
 }
-

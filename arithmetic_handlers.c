@@ -26,6 +26,8 @@ void handle_add(stack_t **stack, unsigned int line_number)
 	result = first->n + second->n;
 
 	second->n = result;
+	second->prev = NULL;
+	first->next = NULL;
 	(*stack) = second;
 
 	free(first);
@@ -54,6 +56,8 @@ void handle_sub(stack_t **stack, unsigned int line_number)
 	result = second->n - first->n;
 
 	second->n = result;
+	second->prev = NULL;
+	first->next = NULL;
 	(*stack) = second;
 
 	free(first);
@@ -85,6 +89,8 @@ void handle_div(stack_t **stack, unsigned int line_number)
 	}
 	result = second->n / first->n;
 	second->n = result;
+	second->prev = NULL;
+	first->next = NULL;
 	(*stack) = second;
 
 	free(first);
@@ -112,6 +118,8 @@ void handle_mul(stack_t **stack, unsigned int line_number)
 	result = second->n * first->n;
 
 	second->n = result;
+	second->prev = NULL;
+	first->next = NULL;
 	(*stack) = second;
 
 	free(first);
@@ -145,6 +153,8 @@ void handle_mod(stack_t **stack, unsigned int line_number)
 	result = second->n % first->n;
 
 	second->n = result;
+	second->prev = NULL;
+	first->next = NULL;
 	(*stack) = second;
 
 	free(first);
