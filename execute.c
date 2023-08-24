@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_t env = {"", 1};
+global_t env = {NULL, 1};
 
 /**
  * get_instructions - provides supported operations

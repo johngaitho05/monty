@@ -36,13 +36,11 @@ stack_t *insert_at_end(stack_t **head, const int n)
 		return (NULL);
 
 	new->n  = n;
+
+	current = node_at_index(*head, stack_len(*head) - 1);
+
 	if (current == NULL)
 		*head = new;
-
-	while (current != NULL && current->next != NULL)
-	{
-		current = current->next;
-	}
 
 	if (current != NULL)
 	{
