@@ -8,7 +8,18 @@
 #include <string.h>
 #include <ctype.h>
 
-extern char *opcode_arg;
+/**
+ * struct global_s - global variables
+ * @arg: the opcode argument
+ * @stack: the insertion mode (1 for stack, 0 for queue)
+ */
+typedef struct global_s
+{
+	char *arg;
+	int stack;
+} global_t;
+
+extern global_t env;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -52,6 +63,7 @@ void free_stack(stack_t *head);
 int delete_at_index(stack_t **head, unsigned int index);
 size_t stack_len(const stack_t *h);
 stack_t *node_at_index(stack_t *head, unsigned int index);
+stack_t *insert_at_end(stack_t **head, const int n);
 void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);

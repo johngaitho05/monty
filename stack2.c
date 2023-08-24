@@ -19,3 +19,36 @@ stack_t *node_at_index(stack_t *head, unsigned int index)
 
 	return (current);
 }
+
+
+/**
+ * insert_at_end - inserts a node at the end of queue
+ * @head: pointer to the head node
+ * @n: value of the new node
+ * Return: the newly inserted node
+ */
+stack_t *insert_at_end(stack_t **head, const int n)
+{
+	stack_t *current = *head;
+	stack_t *new = malloc(sizeof(stack_t));
+
+	if (new == NULL)
+		return (NULL);
+
+	new->n  = n;
+	if (current == NULL)
+		*head = new;
+
+	while (current != NULL && current->next != NULL)
+	{
+		current = current->next;
+	}
+
+	if (current != NULL)
+	{
+		current->next = new;
+		new->prev = current;
+	}
+
+	return (new);
+}

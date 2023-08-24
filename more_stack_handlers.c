@@ -51,7 +51,7 @@ void handle_rotr(stack_t **stack, unsigned int line_number)
 
 
 /**
- * handle_stack - converts queue to stack
+ * handle_stack - sets insertion mode to stack
  * @stack: a pointer to the stack
  * @line_number: position of the opcode in the file
  */
@@ -59,17 +59,20 @@ void handle_stack(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
+
+	env.stack = 1;
 }
 
 /**
- * handle_queue - converts stack to queue
- * @stack: a pointer to the queue
+ * handle_queue - sets insertion mode to queue
+ * @stack: a pointer to the stack
  * @line_number: position of the opcode in the file
  */
 void handle_queue(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
-}
 
+	env.stack = 0;
+}
 

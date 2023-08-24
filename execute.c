@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *opcode_arg;
+global_t env = {"", 1};
 
 /**
  * get_instructions - provides supported operations
@@ -52,7 +52,7 @@ void execute(FILE *file)
 		if (strlen(line) == 0)
 			continue;
 		opcode = strtok(line, " ");
-		opcode_arg = strtok(NULL, " ");
+		env.arg = strtok(NULL, " ");
 		is_valid = 0;
 		for (i = 0; i < num_instructions; i++)
 		{
