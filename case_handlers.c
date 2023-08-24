@@ -42,8 +42,7 @@ void handle_pchar(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * handle_pchar - prints the number represented
- * by the int value of the top node
+ * handle_pstr - prints a string based on the stack values
  * @stack: a pointer to the stack
  * @line_number: position of the opcode in the file
  */
