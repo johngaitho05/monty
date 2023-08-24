@@ -21,6 +21,7 @@ instruction_t *get_instructions(void)
 			{"mul", handle_mul},
 			{"mod", handle_mod},
 			{"pchar", handle_pchar},
+			{"pstr", handle_pstr},
 			{NULL, NULL}
 	};
 

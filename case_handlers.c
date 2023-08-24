@@ -40,3 +40,31 @@ void handle_pchar(stack_t **stack, unsigned int line_number)
 
 	printf("%c\n", (char)ascii_code);
 }
+
+/**
+ * handle_pchar - prints the number represented
+ * by the int value of the top node
+ * @stack: a pointer to the stack
+ * @line_number: position of the opcode in the file
+ */
+void handle_pstr(stack_t **stack, unsigned int line_number)
+{
+	int ascii_code;
+	stack_t *current = *stack;
+
+	(void)line_number;
+	while (current)
+	{
+
+		ascii_code = current->n;
+
+		if (ascii_code <= 0  || ascii_code > 127)
+			break;
+
+		printf("%c", (char) ascii_code);
+		current = current->next;
+	}
+	printf("\n");
+
+	free(current);
+}
