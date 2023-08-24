@@ -46,10 +46,12 @@ stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);
 void free_stack(stack_t *head);
 int delete_at_index(stack_t **head, unsigned int index);
+size_t stack_len(const stack_t *h);
 void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
 void handle_pint(stack_t **stack, unsigned int line_number);
+void handle_swap(stack_t **stack, unsigned int line_number);
 int opcode_match(char *line, instruction_t *instructions, int i);
 void execute(FILE *file);
 #endif

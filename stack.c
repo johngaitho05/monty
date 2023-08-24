@@ -63,12 +63,12 @@ void free_stack(stack_t *head)
 }
 
 /**
- * dlistint_len - returns the number of nodes in a doubly linked list
+ * stack_len - returns the number of nodes in a doubly linked list
  * @h: pointer to the list
  *
  * Return: number of nodes
  */
-size_t dlistint_len(const stack_t *h)
+size_t stack_len(const stack_t *h)
 {
 	size_t nodes = 0;
 
@@ -97,7 +97,7 @@ int delete_at_index(stack_t **head, unsigned int index)
 	stack_t *current = *head;
 	unsigned int i = 0;
 
-	if (*head == NULL || dlistint_len(current) < index + 1)
+	if (*head == NULL || stack_len(current) < index + 1)
 		return (-1);
 
 	if (!index)
