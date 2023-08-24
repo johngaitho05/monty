@@ -47,6 +47,7 @@ size_t print_stack(const stack_t *h);
 void free_stack(stack_t *head);
 int delete_at_index(stack_t **head, unsigned int index);
 size_t stack_len(const stack_t *h);
+stack_t *node_at_index(stack_t *head, unsigned int index);
 void handle_push(stack_t **stack, unsigned int line_number);
 void handle_pop(stack_t **stack, unsigned int line_number);
 void handle_pall(stack_t **stack, unsigned int line_number);
