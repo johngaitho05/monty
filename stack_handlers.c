@@ -9,11 +9,18 @@ void handle_push(stack_t **stack, unsigned int line_number)
 {
 	int value;
 
+	if (opcode_arg == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	value = atoi(opcode_arg);
 
 	if (value == 0 && strncmp(opcode_arg, "0", 1) != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 

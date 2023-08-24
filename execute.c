@@ -3,27 +3,9 @@
 char *opcode_arg;
 
 /**
- * opcode_match - check whether opcode matches any of the supported ones
- * @line: the command
- * @instructions: supported opcodes
- * @i: the opcode to compare
- * Return: 1 if true else 0
+ * get_instructions - provides supported operations
+ * Return: array of supported instructions
  */
-int opcode_match(char *line, instruction_t *instructions, int i)
-{
-	char *prefix;
-	size_t len;
-	int valid_end = 0;
-
-	prefix = instructions[i].opcode;
-	len = strlen(prefix);
-	if (strncmp(" ", &line[len], 1) == 0 || line[len] == '\0')
-		valid_end = 1;
-	if (strncmp(line, prefix, len) == 0 && valid_end)
-		return (1);
-	return (0);
-}
-
 instruction_t *get_instructions(void)
 {
 	static instruction_t instructions[] = {
@@ -59,7 +41,8 @@ void execute(FILE *file)
 	while (getline(&line, &len, file) != -1)
 	{
 		strip(line, NULL);
-		if (strlen(line) == 0 || strncmp(line, "#", 1) == 0)
+		line = remove_comment(line);
+		if (strlen(line) == 0)
 			continue;
 		opcode = strtok(line, " ");
 		opcode_arg = strtok(NULL, " ");
@@ -67,7 +50,7 @@ void execute(FILE *file)
 		for (i = 0; i < num_instructions; i++)
 		{
 			/* If the opcode starts with a known prefix, call the related function */
-			if (opcode_match(line, instructions, i))
+			if (opcode_match(opcode, instructions, i))
 			{
 				is_valid = 1;
 				instructions[i].f(&stack, line_number);

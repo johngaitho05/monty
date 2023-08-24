@@ -45,3 +45,47 @@ int _arraylen(instruction_t **array)
 		count++;
 	return (count);
 }
+
+/**
+ * remove_comment - remove everything after #
+ * @line: a string
+ * Return: the line without comment
+ */
+char *remove_comment(char *line)
+{
+	size_t j = 0;
+
+	while (j < strlen(line))
+	{
+		if (line[j] == '#')
+		{
+			line[j] = '\0';
+			break;
+		}
+		j++;
+	}
+	return (line);
+}
+
+/**
+ * opcode_match - check whether opcode matches any of the supported ones
+ * @line: the command
+ * @instructions: supported opcodes
+ * @i: the opcode to compare
+ * Return: 1 if true else 0
+ */
+int opcode_match(char *line, instruction_t *instructions, int i)
+{
+	char *prefix;
+	size_t len;
+	int valid_end = 0;
+
+	prefix = instructions[i].opcode;
+	len = strlen(prefix);
+	if (strncmp(" ", &line[len], 1) == 0 || line[len] == '\0' || line[len] == '#')
+		valid_end = 1;
+	if (strncmp(line, prefix, len) == 0 && valid_end)
+		return (1);
+	return (0);
+}
+
