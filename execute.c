@@ -38,6 +38,7 @@ void execute(FILE *file)
 			{"push", handle_push}, {"pall", handle_pall},
 			{"pint", handle_pint}, {"pop", handle_pop},
 			{"swap", handle_swap}, {"add", handle_add},
+			{"nop", handle_nop},
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	while (getline(&line, &len, file) != -1)

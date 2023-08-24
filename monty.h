@@ -54,6 +54,7 @@ void handle_pall(stack_t **stack, unsigned int line_number);
 void handle_pint(stack_t **stack, unsigned int line_number);
 void handle_swap(stack_t **stack, unsigned int line_number);
 void handle_add(stack_t **stack, unsigned int line_number);
+void handle_nop(stack_t **stack, unsigned int line_number);
 int opcode_match(char *line, instruction_t *instructions, int i);
 void execute(FILE *file);
 #endif
