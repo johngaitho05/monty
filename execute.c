@@ -37,7 +37,7 @@ void execute(FILE *file)
 	instruction_t instructions[] = {
 			{"push", handle_push}, {"pall", handle_pall},
 			{"pint", handle_pint}, {"pop", handle_pop},
-			{"swap", handle_swap},
+			{"swap", handle_swap}, {"add", handle_add},
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	while (getline(&line, &len, file) != -1)

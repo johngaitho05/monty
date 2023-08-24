@@ -54,11 +54,8 @@ void handle_add(stack_t **stack, unsigned int line_number)
 
 	result = first->n + second->n;
 
-	first->n = result;
-	first->next = second->next;
+	second->n = result;
+	(*stack) = second;
 
-	if (second->next != NULL)
-		second->next->prev = first;
-
-	free(second);
+	free(first);
 }
