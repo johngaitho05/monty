@@ -38,13 +38,15 @@ void execute(FILE *file)
 			{"push", handle_push}, {"pall", handle_pall},
 			{"pint", handle_pint}, {"pop", handle_pop},
 			{"swap", handle_swap}, {"add", handle_add},
-			{"nop", handle_nop},
+			{"nop", handle_nop}, {"sub", handle_sub},
+			{"div", handle_div}, {"mul", handle_mul},
+			{"mod", handle_mod}
 	};
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	while (getline(&line, &len, file) != -1)
 	{
 		strip(line, NULL);
-		if (strlen(line) == 0)
+		if (strlen(line) == 0 || strncmp(line, "#", 1) == 0)
 			continue;
 		monty_opcode = line;
 		is_valid = 0;
