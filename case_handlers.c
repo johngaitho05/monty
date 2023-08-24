@@ -63,4 +63,5 @@ void handle_pstr(stack_t **stack, unsigned int line_number)
 		printf("%c", (char) ascii_code);
 		current = current->next;
 	}
+	printf("\n");
 }
