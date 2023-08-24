@@ -17,7 +17,7 @@ void handle_rotl(stack_t **stack, unsigned int line_number)
 
 	head = *stack;
 	second = (*stack)->next;
-	last = node_at_index(*stack, len-1);
+	last = node_at_index(*stack, len - 1);
 	last->next = head;
 	head->next = NULL;
 	second->prev = NULL;
@@ -32,8 +32,21 @@ void handle_rotl(stack_t **stack, unsigned int line_number)
  */
 void handle_rotr(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	stack_t *head, *second_last, *last;
+	size_t len = stack_len(*stack);
+
 	(void)line_number;
+	if (len < 2)
+		return;
+
+	head = *stack;
+	last = node_at_index(*stack, len - 1);
+	second_last = last->prev;
+	last->next = head;
+	last->prev = NULL;
+	head->prev = last;
+	second_last->next = NULL;
+	(*stack) = last;
 }
 
 
