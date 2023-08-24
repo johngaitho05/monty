@@ -75,7 +75,6 @@ void handle_div(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	first = node_at_index(*stack, 0);
 	second = node_at_index(*stack, 1);
 	if (first->n == 0)
@@ -84,9 +83,7 @@ void handle_div(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	result = second->n / first->n;
-
 	second->n = result;
 	(*stack) = second;
 
@@ -109,7 +106,6 @@ void handle_mul(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	first = node_at_index(*stack, 0);
 	second = node_at_index(*stack, 1);
 
@@ -140,7 +136,12 @@ void handle_mod(stack_t **stack, unsigned int line_number)
 
 	first = node_at_index(*stack, 0);
 	second = node_at_index(*stack, 1);
-
+	if (first->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	result = second->n % first->n;
 
 	second->n = result;
