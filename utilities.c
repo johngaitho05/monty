@@ -33,16 +33,18 @@ char  *strip(char *str, char *tokens)
 
 
 /**
- * _arraylen - computes the size of a null-terminated array
- * @array: a nul-terminated array of strings
+ * count_instructions - counts the number of instructions in the passed array
+ * @instructions: a nul-terminated array of instructions
  * Return: number of elements in the array
  */
-int _arraylen(instruction_t **array)
+int count_instructions(instruction_t *instructions)
 {
 	int count  = 0;
 
-	while (array[count] != NULL)
+	while (instructions[count].opcode != NULL)
+	{
 		count++;
+	}
 	return (count);
 }
 
@@ -82,7 +84,7 @@ int opcode_match(char *line, instruction_t *instructions, int i)
 
 	prefix = instructions[i].opcode;
 	len = strlen(prefix);
-	if (strncmp(" ", &line[len], 1) == 0 || line[len] == '\0' || line[len] == '#')
+	if (strncmp(" ", &line[len], 1) == 0 || line[len] == '\0')
 		valid_end = 1;
 	if (strncmp(line, prefix, len) == 0 && valid_end)
 		return (1);

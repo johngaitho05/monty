@@ -42,7 +42,7 @@ typedef struct instruction_s
 
 char *remove_comment(char *line);
 int opcode_match(char *line, instruction_t *instructions, int i);
-int _arraylen(instruction_t **array);
+int count_instructions(instruction_t *instructions);
 void set_arg(char *arg, char *command);
 char *strip(char *str, char *tokens);
 stack_t *push(stack_t **head, const int n);
@@ -62,6 +62,7 @@ void handle_sub(stack_t **stack, unsigned int line_number);
 void handle_div(stack_t **stack, unsigned int line_number);
 void handle_mul(stack_t **stack, unsigned int line_number);
 void handle_mod(stack_t **stack, unsigned int line_number);
+void handle_pchar(stack_t **stack, unsigned int line_number);
 int opcode_match(char *line, instruction_t *instructions, int i);
 void execute(FILE *file);
 #endif
