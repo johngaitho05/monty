@@ -40,7 +40,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+void set_arg(char *arg, char *command);
 char *strip(char *str, char *tokens);
 stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);

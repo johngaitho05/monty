@@ -1,21 +1,6 @@
 #include "monty.h"
 
 /**
- * set_arg - retrieve opcode argument from the environment variables
- * @arg: the variable on which to cast the argument
- * @command: the command being executed
- */
-void set_arg(char *arg, char *command)
-{
-	int index = strlen(command);
-
-	while (strchr(&monty_opcode[index], ' ') == 0)
-		index++;
-	strncpy(arg, monty_opcode + index, 1024);
-	strip(arg, NULL);
-}
-
-/**
  * handle_push - pushes a value to the stuck
  * @stack: a pointer to the stack
  * @line_number: position of the opcode in the file
@@ -81,3 +66,32 @@ void handle_pall(stack_t **stack, unsigned int line_number)
 	print_stack(*stack);
 }
 
+
+/**
+ * handle_swap - swaps the top two elements
+ * @stack: a pointer to the stack
+ * @line_number: position of the opcode in the file
+ */
+void handle_swap(stack_t **stack, unsigned int line_number)
+{
+
+	stack_t *second;
+
+	if (stack_len(*stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+
+	}
+	second = (*stack)->next;
+
+	(*stack)->next = second->next;
+	if (second->next != NULL)
+		second->next->prev = *stack;
+	second->next = *stack;
+	second->prev = NULL;
+	(*stack)->prev = second;
+
+	(*stack) = second;
+}
