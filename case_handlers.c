@@ -67,3 +67,29 @@ void handle_pstr(stack_t **stack, unsigned int line_number)
 
 	free(current);
 }
+/**
+ * handle_rotl - rotate the stack to the top
+ * @stack: a pointer to the stack
+ * @line_number: position of the opcode in the file
+ */
+
+void handle_rotl(stack_t **stack, unsigned int line_number)
+{
+    stack_t *first, *second, *current;
+    (void)line_number;
+
+    first = (*stack);
+    second = first->next;
+    current = second;
+
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    current->next = first;
+    first->prev = current;
+    second->prev = NULL;
+    (*stack) = second;
+    (*stack)->next = NULL;
+
+}
