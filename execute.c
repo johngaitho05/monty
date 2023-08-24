@@ -19,7 +19,9 @@ instruction_t *get_instructions(void)
 			{"sub", handle_sub},
 			{"div", handle_div},
 			{"mul", handle_mul},
-			{"mod", handle_mod}
+			{"mod", handle_mod},
+			{"pchar", handle_pchar},
+			{NULL, NULL}
 	};
 
 	return (instructions);
@@ -37,7 +39,7 @@ void execute(FILE *file)
 	instruction_t *instructions = get_instructions();
 	int is_valid, line_number = 1, i,
 
-	num_instructions = _arraylen(&instructions);
+	num_instructions = count_instructions(instructions);
 	while (getline(&line, &len, file) != -1)
 	{
 		strip(line, NULL);
