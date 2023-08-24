@@ -7,14 +7,11 @@
  */
 void handle_push(stack_t **stack, unsigned int line_number)
 {
-	char arg[1024];
 	int value;
 
-	set_arg(arg, "push");
+	value = atoi(opcode_arg);
 
-	value = atoi(arg);
-
-	if (value == 0 && strncmp(arg, "0", 1) != 0)
+	if (value == 0 && strncmp(opcode_arg, "0", 1) != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
