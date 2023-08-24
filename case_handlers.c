@@ -64,8 +64,6 @@ void handle_pstr(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 	printf("\n");
-
-	free(current);
 }
 /**
  * handle_rotl - rotate the stack to the top
