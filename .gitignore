@@ -12,3 +12,4 @@ test.*
 /data/
 secret.*
 monty
+cmake-build-debug/
