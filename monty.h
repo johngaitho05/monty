@@ -8,7 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 
-extern char *monty_opcode;
+extern char *opcode_arg;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

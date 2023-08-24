@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *monty_opcode;
+char *opcode_arg;
 
 /**
  * opcode_match - check whether opcode matches any of the supported ones
@@ -50,7 +50,7 @@ instruction_t *get_instructions(void)
 void execute(FILE *file)
 {
 	stack_t *stack = NULL;
-	char *line = NULL;
+	char *line = NULL, *opcode;
 	size_t len = 0;
 	instruction_t *instructions = get_instructions();
 	int is_valid, line_number = 1, i,
@@ -61,7 +61,8 @@ void execute(FILE *file)
 		strip(line, NULL);
 		if (strlen(line) == 0 || strncmp(line, "#", 1) == 0)
 			continue;
-		monty_opcode = line;
+		opcode = strtok(line, " ");
+		opcode_arg = strtok(NULL, " ");
 		is_valid = 0;
 		for (i = 0; i < num_instructions; i++)
 		{
@@ -74,7 +75,7 @@ void execute(FILE *file)
 		}
 		if (is_valid == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			free_stack(stack);
 			fclose(file);
 			exit(EXIT_FAILURE);
