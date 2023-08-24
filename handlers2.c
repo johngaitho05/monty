@@ -28,3 +28,37 @@ void handle_swap(stack_t **stack, unsigned int line_number)
 
 	(*stack) = second;
 }
+
+
+/**
+ * handle_add - adds the top two elements and stores
+ * the results in the first node
+ * @stack: a pointer to the stack
+ * @line_number: position of the opcode in the file
+ */
+void handle_add(stack_t **stack, unsigned int line_number)
+{
+
+	int result;
+	stack_t *first, *second;
+
+	if (stack_len(*stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	first = node_at_index(*stack, 0);
+	second = node_at_index(*stack, 1);
+
+	result = first->n + second->n;
+
+	first->n = result;
+	first->next = second->next;
+
+	if (second->next != NULL)
+		second->next->prev = first;
+
+	free(second);
+}
