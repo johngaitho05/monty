@@ -24,6 +24,25 @@ int opcode_match(char *line, instruction_t *instructions, int i)
 	return (0);
 }
 
+instruction_t *get_instructions(void)
+{
+	static instruction_t instructions[] = {
+			{"push", handle_push},
+			{"pall", handle_pall},
+			{"pint", handle_pint},
+			{"pop", handle_pop},
+			{"swap", handle_swap},
+			{"add", handle_add},
+			{"nop", handle_nop},
+			{"sub", handle_sub},
+			{"div", handle_div},
+			{"mul", handle_mul},
+			{"mod", handle_mod}
+	};
+
+	return (instructions);
+}
+
 /**
  * execute - executes the commands contained in the file
  * @file: the file containing monty bytes
@@ -33,16 +52,10 @@ void execute(FILE *file)
 	stack_t *stack = NULL;
 	char *line = NULL;
 	size_t len = 0;
-	int is_valid, line_number = 1, i, num_instructions;
-	instruction_t instructions[] = {
-			{"push", handle_push}, {"pall", handle_pall},
-			{"pint", handle_pint}, {"pop", handle_pop},
-			{"swap", handle_swap}, {"add", handle_add},
-			{"nop", handle_nop}, {"sub", handle_sub},
-			{"div", handle_div}, {"mul", handle_mul},
-			{"mod", handle_mod}
-	};
-	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
+	instruction_t *instructions = get_instructions();
+	int is_valid, line_number = 1, i,
+
+	num_instructions = _arraylen(&instructions);
 	while (getline(&line, &len, file) != -1)
 	{
 		strip(line, NULL);

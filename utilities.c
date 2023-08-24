@@ -45,3 +45,18 @@ char  *strip(char *str, char *tokens)
 
 	return (str);
 }
+
+
+/**
+ * _arraylen - computes the size of a null-terminated array
+ * @array: a nul-terminated array of strings
+ * Return: number of elements in the array
+ */
+int _arraylen(instruction_t **array)
+{
+	int count  = 0;
+
+	while (array[count] != NULL)
+		count++;
+	return (count);
+}
