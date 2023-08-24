@@ -22,6 +22,10 @@ instruction_t *get_instructions(void)
 			{"mod", handle_mod},
 			{"pchar", handle_pchar},
 			{"pstr", handle_pstr},
+			{"rotl", handle_rotl},
+			{"rotr", handle_rotr},
+			{"stack", handle_stack},
+			{"queue", handle_queue},
 			{NULL, NULL}
 	};
 

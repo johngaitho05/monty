@@ -45,6 +45,7 @@ int opcode_match(char *line, instruction_t *instructions, int i);
 int count_instructions(instruction_t *instructions);
 void set_arg(char *arg, char *command);
 char *strip(char *str, char *tokens);
+int opcode_match(char *line, instruction_t *instructions, int i);
 stack_t *push(stack_t **head, const int n);
 size_t print_stack(const stack_t *h);
 void free_stack(stack_t *head);
@@ -64,6 +65,9 @@ void handle_mul(stack_t **stack, unsigned int line_number);
 void handle_mod(stack_t **stack, unsigned int line_number);
 void handle_pchar(stack_t **stack, unsigned int line_number);
 void handle_pstr(stack_t **stack, unsigned int line_number);
-int opcode_match(char *line, instruction_t *instructions, int i);
+void handle_rotl(stack_t **stack, unsigned int line_number);
+void handle_rotr(stack_t **stack, unsigned int line_number);
+void handle_stack(stack_t **stack, unsigned int line_number);
+void handle_queue(stack_t **stack, unsigned int line_number);
 void execute(FILE *file);
 #endif
